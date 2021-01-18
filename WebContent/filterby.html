@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="validate.js"></script>
+</head>
+<body>
+
+
+<div class ="filter-by">
+
+<form name ="radioform1" action = "filterByPrice.jsp" onsubmit = " return validateRadio1()">
+	
+		<label><strong>Price</strong></label>
+		<br><br>
+		<input type="hidden" name="before" value="0"/>
+		<input id ="r" type = "radio" name = "price" value = "1000" />
+		<label>EGP 0 - EGP 1000</label>
+		
+		<br>
+		<input type="hidden" name="before" value="1001"/>
+		<input id ="r"type = "radio" name = "price" value = "2000" />
+		<label>EGP 1000 - EGP 2000</label>
+	
+		<br>
+		<input type="hidden" name="before" value="2001"/>
+		<input id ="r"type = "radio" name = "price" value = "3000" />
+		<label>EGP 2000 - EGP 3000</label>
+		
+		<br>
+		<input type="hidden" name="before" value="3001"/>
+		<input id ="r"type = "radio" name = "price" value = "4000" />
+		<label>EGP 3000 - EGP 4000</label>
+		
+		<br>
+		<input type="hidden" name="before" value="4001"/>
+		<input id ="r"type = "radio" name = "price" value = "99999999999999999" />
+		<label> + EGP 4000 </label>
+		<br>
+		
+		<button type = "submit" > Filter </button>
+		
+</form>
+	</div>
+
+<br><br>
+<div class ="filter-by">
+<form name = "radioform2"action = "filterByStars.jsp" onsubmit = " return validateRadio2()">
+
+		<label><strong>Stars</strong></label>
+		<br><br>
+		<input id ="r" type = "radio" name = "star" value = "1" />
+		<label> 1 star</label>
+		
+		<br><input id ="r"type = "radio" name = "star" value = "2" />
+		<label>2 star</label>
+	
+		<br><input id ="r" type = "radio" name = "star" value = "3" />
+		<label>3 star</label>
+		
+		<br><input id ="r" type = "radio" name = "star" value = "4" />
+		<label>4 star</label>
+		
+		<br><input id ="r"type = "radio" name = "star" value = "5" />
+		<label>5 star</label>
+		<br>
+		<button type = "submit"> Filter </button>
+		
+</form>
+	</div>
+	<br><br>
+<div class ="filter-by">
+<form name = "radioform3"action = "filterByRating.jsp" onsubmit = " return validateRadio3()">
+
+		<label><strong>Review score</strong></label>
+		<br><br>
+		<input id ="r"type = "radio" name = "rate" value = "9" />
+		<label>Superb: 9+</label>
+		
+		<br><input id ="r"type = "radio" name = "rate" value = "8" />
+		<label>Very good: 8+</label>
+	
+		<br><input id ="r"type = "radio" name = "rate" value = "7" />
+		<label>Good: 7+</label>
+		
+		<br><input id ="r"type = "radio" name = "rate" value = "6" />
+		<label> Pleasant: 6+</label>
+		
+		
+		<br>
+		<button type = "submit"> Filter </button>
+		
+</form>
+	</div>
+<div class ="filter-by">
+<form name ="radioform4" action = "filterByMeals.jsp" onsubmit = " return validateRadio4()">
+
+		<label><strong>Meals</strong></label>
+		<br><br>
+		<input id ="r"type = "radio" name = "meal" value = "1" />
+		<label>Self catering</label>
+		
+		<br><input id ="r"type = "radio" name = "meal" value = "2" />
+		<label>Breakfast included</label>
+	
+		<br><input id ="r"type = "radio" name = "meal" value = "3" />
+		<label>Breakfast & lunch included</label>
+		
+		<br><input id ="r"type = "radio" name = "meal" value = "4" />
+		<label> Breakfast & dinner included</label>
+		
+		
+		<br>
+		<button type = "submit"> Filter </button>
+		
+</form>
+	</div>
+	<div class ="filter-by">
+<form name = "radioform5"action = "filterBydistance.jsp" onsubmit = " return validateRadio5()">
+
+		<label><strong>Distance From the centre</strong></label>
+		<br><br>
+		<input id ="r"type = "radio" name = "distance" value = "3" />
+		<label>less than 3 km</label>
+		
+		<br><input id ="r"type = "radio" name = "distance" value = "5" />
+		<label>less than 5 km</label>
+	
+		<br><input id ="r"type = "radio" name = "distance" value = "10" />
+		<label>less than 10 km</label>
+		
+		<br><input id ="r"type = "radio" name = "distance" value = "20" />
+		<label> less than 20 km</label>
+		
+		
+		<br>
+		<button type = "submit"> Filter </button>
+		
+</form>
+	</div>
+</body>
+
+</html>

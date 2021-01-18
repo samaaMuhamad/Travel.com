@@ -1,0 +1,47 @@
+/* navigation bar style  */
+header{
+	background-color:#003580; 
+	color:white;
+}
+li{
+	list-style-type: none;	
+}
+a{
+	color:white;
+}
+a:link{
+	color:white;
+}
+.links a:hover,.roomdropdown:hover{
+	background-color:rgba(191,191,191,0.25);
+	color:white;
+	border-radius: 3px;
+}
+
+
+/* search style */
+.search-div{
+	background-color: #febb02;
+	border-radius: 0.25rem;
+}
+.search-div input{
+	border:none;
+}
+
+/* sign up page */
+/*captcha*/
+.refresh-icon-div{
+    margin-left:-70px;
+  }      
+  
+  /* admin homepage */
+  .roomdropdown{
+  color: white;
+  }
+  .roomdropdown-div a{
+  		color:black!important;
+  }
+   .roomdropdown-div a:hover{
+	   background-color:#003580; 
+	   color:white!important;
+   }

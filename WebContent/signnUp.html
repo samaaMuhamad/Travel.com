@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="bootstrap/css/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<script src="validate.js"></script>
+<title>Sign up form</title>
+</head>
+<body onload="initialize()">
+
+	<!-- navigation bar -->
+	<header>
+		<nav class="navbar navbar-expand p-3 pl-5">
+		 	<div class="row w-100">				
+		 		 <div class="col-9">
+			        <a class="navbar-brand font-weight-bold" href="#"><h1>Travel.com</h1></a>
+			   	 </div>
+		 	</div>
+		 </nav>
+		 
+	</header>
+
+	<!-- content -->
+	<div class="row my-5 mx-0">
+		<div class="card col-4 mx-auto p-0">
+			<div class="card-header col-12">
+				<a href="login.jsp" class="float-right btn btn-outline-primary mt-1">Sign in</a>
+				<h4 class="card-title mt-2">Sign up</h4>
+			</div>
+			<div class="card-body">
+				<form name ="signUp" id="signupForm" action ="RegisterServlet" method= "get" onsubmit = "return validateSignUp()" >
+					<div class="form-row">
+						<div class="form-group col-12">
+							<label for="name">Name <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+						<div class="form-group col-12">
+							<label for="username">username <span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="username" name="username" required onblur="checkUserExist()"/><span id="isU"></span>
+							</div>
+						<div class="form-group col-12">
+							<label for="email">Email <span class="text-danger">*</span></label>
+							<input type="email" class="form-control" id="email" name="email" required onblur="checkEmailExist()"/><span id="isE"></span>
+						</div>
+						<div class="form-group col-12">
+						<label for="phone">Phone <span class="text-danger">*</span></label>
+						<input type="text" class="form-control" id="phone" name="mobile" required>
+						</div>
+						<div class="form-group col-12">
+							<label class="d-block">Type: <span class="text-danger">*</span></label>
+							<label class="form-check form-check-inline pl-5 d-block">
+								<input class="form-check-input" id="type" type="radio" name="type" value="admin"onclick="show()" required>
+								<span class="form-check-label"> Admin</span>
+							</label>
+							<label class="form-check form-check-inline pl-5 d-block">
+								<input class="form-check-input" id="type" type="radio" name="type" value="client" onclick="show()" required>
+								<span class="form-check-label"> Client </span>
+							</label>
+							
+						</div>
+						<div class="form-group col-12 admin" id="show-for-admin" style="display: none;">
+							<label for="hotel">Enter Your Hotel Name<span class="text-danger">*</span></label>
+							<input type="text" class="form-control" id="hotel" name="hotel" >
+						</div>
+						<!--CAPTCHA-->
+						<div class="form-group col-12">
+							<label for="captcha">Captcha <span class="text-danger">*</span></label>
+							<div class="row">
+								<div class=" col-lg-6 col-md-6">
+									<input type="text" class="form-control" id="captchaRead" value="" readonly="">
+								</div>
+								<div class="col-lg-6 col-md-6">
+									<div class="row">
+										<div class="col-10">
+											<input type="text" class="form-control" id="captchaWrite" required>
+										</div>
+										<div class="col-2">
+											<button type="button" onclick="Cap()" class="bg-white rounded border-0 refresh-icon-div mt-1 py-1" id="refresh"><i class="fas fa-redo  text-dark p-1" ></i></button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-primary px-5 w-100" onclick="return validCap()">Continue with Email</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<script src="bootstrap/js/main.js"></script>
+	<script src="bootstrap/js/jquery-3.5.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+	    function checkUserExist(){
+	        var xmlhttp = new XMLHttpRequest();
+	        var username =  document.getElementById("username").value;	        var url = "exist.jsp?username=" + username;
+	        xmlhttp.onreadystatechange = function(){
+	            if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+	            	if (!(xmlhttp.responseText.indexOf('Username is Valid') == -1)) {
+	            		   //do something
+	            		document.getElementById("isU").style.color = "green";
+	            		}
+                     else if(!(xmlhttp.responseText.indexOf('Username already exists') == -1)) {
+                         document.getElementById("isU").style.color = "red";
+                     }
+	                document.getElementById("isU").innerHTML = xmlhttp.responseText;
+	            }
+	            
+	        };
+	        try{
+		        xmlhttp.open("GET",url,true);
+		        xmlhttp.send();
+	    	}catch(e){alert("unable to connect to server");}
+	    }
+	    
+	    function checkEmailExist(){
+	        var xmlhttp = new XMLHttpRequest();
+	        var email =  document.getElementById("email").value;
+	        var url = "existEmail.jsp?email=" + email;
+	        xmlhttp.onreadystatechange = function(){
+	            if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+	            	if (!(xmlhttp.responseText.indexOf('Email is valid') == -1)) {
+	            		   //do something
+	            		document.getElementById("isE").style.color = "green";
+	            		}
+                     else if(!(xmlhttp.responseText.indexOf('Email already exists') == -1)) {
+                         document.getElementById("isE").style.color = "red";
+                     }
+	                document.getElementById("isE").innerHTML = xmlhttp.responseText;
+	            }
+	            
+	        };
+	        try{
+		        xmlhttp.open("GET",url,true);
+		        xmlhttp.send();
+	    	}catch(e){alert("unable to connect to server");}
+	    }
+    </script>
+</body>
+</html>
